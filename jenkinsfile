@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'SPEC', defaultValue: 'cypress/integration/**/**', description: 'Enter the description')
+        choice(name: 'BROWSER', choices: ['chrome'], description: 'description')
+    }
+    options {
+        ansiColor('xterm')
+    }
+
+    stages {
+        stage('Bulding') {
+            echo 'building qualcosa'
+        }
+        stage('Testing') {
+            steps {
+                bat 'npn i'
+                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+        stage('Deploying') {
+            echo 'Deploy some...'
+        }
+    }
+    post{
+        always 
+    }
+}
+

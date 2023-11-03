@@ -5,6 +5,9 @@ describe('Test links on video.sky.it', () => {
 
     cy.get('a')
       .each((link) => {
+        if (link.prop('href') == '') {
+          return
+        }
         cy.request({
           url: link.prop('href'),
           failOnStatusCode: false
@@ -22,9 +25,9 @@ describe('Test links on video.sky.it', () => {
         for (let i = 0; i < linkNoWork.length; i++) {
           console.log('be? ' + linkNoWork[i]);
         }
-          let test = linkNoWork.join(', ');
-          expect(linkNoWork.length,`The following links doesn't work:  ${linkNoWork.join(', ')}`).to.equal(0);
-        
+        let test = linkNoWork.join(', ');
+        expect(linkNoWork.length, `The following links doesn't work:  ${linkNoWork.join(', ')}`).to.equal(0);
+
       })
   })
 })

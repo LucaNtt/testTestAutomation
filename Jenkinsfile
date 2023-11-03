@@ -1,30 +1,24 @@
-pipeline{
+pipeline {
     agent any
-    parameters{
-        string(name: 'SPEC', defaultValue: 'cypress/integration/**/**', description: 'Enter the description')
-        choice(name: 'BROWSER', choices: ['chrome', 'Safari'], description: 'description')
-    }
-    options{
-        ansiColor('xterm')
-    }
 
-    stages{
-        stage('Bulding') {
-            echo 'building qualcosa'
-        }
-        stage('Testing') {
+    tools { nodejs 'Node12' }
+
+    stages {
+        stage('Dependencies') {
             steps {
-                bat 'npn i'
-                bat "npm run test"
+                sh 'npm i'
+                sh 'npm install lambdatest-cypress-cli'
             }
         }
-        stage('Deploying') {
-            echo "Deploy some..."
+        stage('e2e Tests') {
+            steps {
+                sh 'npm run test'
+            }
         }
-    }
-    post{
-        always{
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }

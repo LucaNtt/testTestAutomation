@@ -1,29 +1,31 @@
-pipeline {
+pipeline{
     agent any
-    parameters {
+    parameters{
         string(name: 'SPEC', defaultValue: 'cypress/integration/**/**', description: 'Enter the description')
-        choice(name: 'BROWSER', choices: ['chrome'], description: 'description')
+        choice(name: 'BROWSER', choices: ['chrome', 'Safari'], description: 'description')
     }
-    options {
+    options{
         ansiColor('xterm')
     }
 
-    stages {
+    stages{
         stage('Bulding') {
             echo 'building qualcosa'
         }
         stage('Testing') {
             steps {
                 bat 'npn i'
-                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                bat "npm run test"
             }
         }
         stage('Deploying') {
-            echo 'Deploy some...'
+            echo "Deploy some..."
         }
     }
     post{
-        always 
+        always{
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        }
     }
 }
 

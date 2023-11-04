@@ -19,6 +19,7 @@ pipeline {
             always {
                 sh 'npx mochawesome-merge "cypress/results/*.json" > mochawesome.json;'
                 sh 'npx mochawesome-merge "npx marge mochawesome.json;'
+                echo ''
                 echo 'Stato finale della pipeline'
             }
             }

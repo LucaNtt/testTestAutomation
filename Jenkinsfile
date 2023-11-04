@@ -18,8 +18,8 @@ pipeline {
     }
     post {
         always {
-            sh 'npm mochawesome-merge "cypress/results/*.json" > mochawesome.json'
-            sh 'npm marge mochawesome.json'
+            sh 'npx mochawesome-merge "cypress/results/*.json" > mochawesome.json'
+            sh 'npx marge mochawesome.json'
             echo ''
             echo 'Stato finale della pipeline'
         }

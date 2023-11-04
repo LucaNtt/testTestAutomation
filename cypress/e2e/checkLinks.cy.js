@@ -1,5 +1,5 @@
 describe('Test links on video.sky.it', () => {
-  it('Controlla che tutti i links siano validi', () => {
+  it('Check Links', () => {
     var linkNoWork = []
     cy.visit('/')
 
@@ -25,7 +25,6 @@ describe('Test links on video.sky.it', () => {
         for (let i = 0; i < linkNoWork.length; i++) {
           console.log('be? ' + linkNoWork[i]);
         }
-        let test = linkNoWork.join(', ');
         expect(linkNoWork.length, `The following links doesn't work:  ${linkNoWork.join(', ')}`).to.equal(0);
 
       })

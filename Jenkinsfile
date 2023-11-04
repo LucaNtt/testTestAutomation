@@ -15,11 +15,7 @@ pipeline {
                 sh 'npm run test'
             }
         }
-        stage('Deploy') {
-            steps {
-                cp 'Deploying....'
-            }
-        }
+
     }
 }
 

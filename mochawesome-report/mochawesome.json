@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-11-04T09:10:59.878Z",
+    "end": "2023-11-04T09:12:09.348Z",
+    "duration": 69470,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c33a7792-6c56-48e6-85d8-25ba0ea4db97",
+      "title": "",
+      "fullFile": "cypress/e2e/checkLinks.cy.js",
+      "file": "cypress/e2e/checkLinks.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c3fcfc41-a6e9-425e-a5a6-d860d9d92250",
+          "title": "Test links on video.sky.it",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check Links",
+              "fullTitle": "Test links on video.sky.it Check Links",
+              "timedOut": null,
+              "duration": 69311,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var linkNoWork = [];\ncy.visit('/');\ncy.get('a').each(link => {\n  if (link.prop('href') == '') {\n    return;\n  }\n  cy.request({\n    url: link.prop('href'),\n    failOnStatusCode: false\n  }).its('status').then(item => {\n    console.log('boooot ' + item);\n    if (item === 404) {\n      linkNoWork.push(link.prop('href'));\n    }\n  });\n  console.log('1link no work have at least an item? ' + linkNoWork[0]);\n}).then(() => {\n  for (let i = 0; i < linkNoWork.length; i++) {\n    console.log('be? ' + linkNoWork[i]);\n  }\n  expect(linkNoWork.length, `The following links doesn't work:  ${linkNoWork.join(', ')}`).to.equal(0);\n});",
+              "err": {
+                "message": "AssertionError: The following links doesn't work:  https://video.sky.it/[section], https://www.sky.it/come-vedere/app.html, https://www.sky.it/assistenza/moduli-contrattuali.html, https://www.sky.it/assistenza/trasparenza-tariffaria.html, https://www.sky.it/info/modulo_segnalazione_abusi.html: expected 5 to equal 0",
+                "estack": "AssertionError: The following links doesn't work:  https://video.sky.it/[section], https://www.sky.it/come-vedere/app.html, https://www.sky.it/assistenza/moduli-contrattuali.html, https://www.sky.it/assistenza/trasparenza-tariffaria.html, https://www.sky.it/info/modulo_segnalazione_abusi.html: expected 5 to equal 0\n    at Context.eval (webpack://testtestautomation/./cypress/e2e/checkLinks.cy.js:28:100)",
+                "diff": null
+              },
+              "uuid": "ec0cddbc-b7a5-4f3e-97a0-4d0101b464eb",
+              "parentUUID": "c3fcfc41-a6e9-425e-a5a6-d860d9d92250",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ec0cddbc-b7a5-4f3e-97a0-4d0101b464eb"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 69311,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

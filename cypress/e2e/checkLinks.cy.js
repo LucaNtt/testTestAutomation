@@ -1,6 +1,7 @@
 describe('Test links on video.sky.it', () => {
   it('Check Links', () => {
     var linkNoWork = []
+    var linkWork = []
     cy.visit('/')
 
     cy.get('a')
@@ -14,18 +15,17 @@ describe('Test links on video.sky.it', () => {
         })
           .its('status')
           .then((item) => {
-            console.log('boooot ' + item)
             if (item === 404) {
               linkNoWork.push(link.prop('href'))
+            }else{
+              cy.addContext(`the following link NOT return 404:  ${link.prop('href')}`)
+              linkWork.push(link.prop('href'))
             }
           })
-
-        console.log('1link no work have at least an item? ' + linkNoWork[0])
       }).then(() => {
-        for (let i = 0; i < linkNoWork.length; i++) {
-          console.log('be? ' + linkNoWork[i]);
-        }
-        expect(linkNoWork.length, `The following links doesn't work:  ${linkNoWork.join(', ')}`).to.equal(0);
+        
+        cy.log(`the following links NOT return 404:  ${linkWork.join(', ')}`)
+        expect(linkNoWork.length, `the following links return 404:  ${linkNoWork.join(', ')}`).to.equal(0);
 
       })
   })

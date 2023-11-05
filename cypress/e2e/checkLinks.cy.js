@@ -24,7 +24,7 @@ describe('Test links on video.sky.it', () => {
           })
       }).then(() => {
         
-        cy.log(`the following links NOT return 404:  ${linkWork.join(', ')}`)
+        cy.log(`the following link NOT return 404:  ${linkWork.join(', ')}`)
         expect(linkNoWork.length, `the following links return 404:  ${linkNoWork.join(', ')}`).to.equal(0);
 
       })

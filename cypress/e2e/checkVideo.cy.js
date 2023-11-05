@@ -12,8 +12,8 @@ describe('template spec', () => {
               cy.get('#c-content > div > div.l-wrapper-container > div > div:nth-child(1) > div.l-grid__main > div > div > div > div > div.c-video-details__title-row > div > h1')
                 .invoke('text')
                 .then((title) => {
-                  cy.addContext(`the ${titleLinkFromText} is equal to ${title}`)
-                  cy.log(`the ${titleLinkFromText} is equal to ${title}`)
+                  cy.addContext(`the title link: "${titleLinkFromText}" is equal to page title: "${title}"`)
+                  cy.log(`the title link: "${titleLinkFromText}" is equal to page title: "$${title}"`)
                   expect(titleLinkFromText).to.equal(title);
                 })
             })

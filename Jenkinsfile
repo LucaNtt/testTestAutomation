@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Checkout code') {
             steps {
-                git git branch: 'dev', url: 'https://github.com/LucaNtt/testTestAutomation'
+                git branch: 'dev', url: 'https://github.com/LucaNtt/testTestAutomation'
             }
         }
         stage('Dependencies') {

@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh 'rm /Users/luca.seccia/.jenkins/workspace/test2/mochawesome.json'
                 sh 'rm -r /Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/'
-                sh 'rm -r /Users/luca.seccia/.jenkins/workspace/test2/cypress'
+                sh 'rm -r /Users/luca.seccia/.jenkins/workspace/test2/cypress/results'
             }
         }
         stage('Dependencies') {

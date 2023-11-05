@@ -4,9 +4,9 @@ pipeline {
     tools { nodejs 'Node20.6.0' }
 
     stages {
-        stage('Clean workspace') {
+        stage('Clean log File') {
             steps {
-                deleteDir(dirPath: '/Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/mochawesome.html')
+                sh 'rm /Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/mochawesome.html'
             }
         }
         stage('Dependencies') {

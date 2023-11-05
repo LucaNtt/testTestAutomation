@@ -6,9 +6,9 @@ pipeline {
     stages {
         stage('Clean log File') {
             steps {
-                sh 'rm /Users/luca.seccia/.jenkins/workspace/test2/mochawesome.json'
-                sh 'rm -r /Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/'
-                sh 'rm -r /Users/luca.seccia/.jenkins/workspace/test2/cypress/results'
+                sh 'rm -f mochawesome.json'
+                sh 'rm -rf mochawesome-report/'
+                sh 'rm -rf cypress/results'
             }
         }
         stage('Dependencies') {

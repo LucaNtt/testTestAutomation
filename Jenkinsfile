@@ -6,12 +6,7 @@ pipeline {
     stages {
         stage('Clean workspace') {
             steps {
-                deleteDir()
-            }
-        }
-        stage('Checkout code') {
-            steps {
-                git branch: 'dev', url: 'https://github.com/LucaNtt/testTestAutomation'
+                deleteDir(dirPath: '/Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/mochawesome.html')
             }
         }
         stage('Dependencies') {

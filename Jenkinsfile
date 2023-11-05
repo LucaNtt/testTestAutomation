@@ -19,7 +19,7 @@ pipeline {
         always {
             sh 'npx mochawesome-merge "cypress/results/*.json" > mochawesome.json'
             sh 'npx marge mochawesome.json'
-            echo ''
+            echo 'Report: /Users/luca.seccia/.jenkins/workspace/test2/mochawesome-report/mochawesome.html'
             echo 'Stato finale della pipeline'
         }
     }

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-05T16:02:14.519Z",
+    "end": "2023-11-05T16:02:17.307Z",
+    "duration": 2788,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f5a52e81-4c33-4794-ba57-1740d1b6e06c",
+      "title": "",
+      "fullFile": "cypress/e2e/checkVideo.cy.js",
+      "file": "cypress/e2e/checkVideo.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28d07dbe-5bf3-4ac4-9716-e21457a7a4f8",
+          "title": "template spec",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "check Video Link",
+              "fullTitle": "template spec check Video Link",
+              "timedOut": null,
+              "duration": 2724,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"the title link: \\\"Usa 2024, sondaggio NYT: \\\"Trump avanti in 5 Swing States\\\"\\\" is equal to page title: \\\"Usa 2024, sondaggio NYT: \\\"Trump avanti in 5 Swing States\\\"\\\"\"",
+              "code": "cy.visit('/');\ncy.get('#component-news > div.l-wrapper.c-hp-section-widget__section-widget > div > div > div > div > div > div.c-hp-videos-section-widget__container-videos > div > a.c-video-card.c-video-card--no-mobile').then(item => {\n  let href = item.attr('href');\n  cy.get('#component-news > div.l-wrapper.c-hp-section-widget__section-widget > div > div > div > div > div > div.c-hp-videos-section-widget__container-videos > div > a.c-video-card.c-video-card--no-mobile > div > div.c-video-card__col-info > h2').invoke('text').then(titleLinkFromText => {\n    cy.visit(href).then(() => {\n      cy.get('#c-content > div > div.l-wrapper-container > div > div:nth-child(1) > div.l-grid__main > div > div > div > div > div.c-video-details__title-row > div > h1').invoke('text').then(title => {\n        cy.addContext(`the title link: \"${titleLinkFromText}\" is equal to page title: \"${title}\"`);\n        cy.log(`the title link: \"${titleLinkFromText}\" is equal to page title: \"$${title}\"`);\n        expect(titleLinkFromText).to.equal(title);\n      });\n    });\n  });\n});",
+              "err": {},
+              "uuid": "c4304f5f-84f4-46d9-acd5-f98ded92dad9",
+              "parentUUID": "28d07dbe-5bf3-4ac4-9716-e21457a7a4f8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c4304f5f-84f4-46d9-acd5-f98ded92dad9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2724,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": true,
+        "html": false,
+        "jnson": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

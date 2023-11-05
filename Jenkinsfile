@@ -4,6 +4,11 @@ pipeline {
     tools { nodejs 'Node20.6.0' }
 
     stages {
+        stage('Clean workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Dependencies') {
             steps {
                 sh 'npm i'

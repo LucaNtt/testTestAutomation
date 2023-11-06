@@ -1,5 +1,4 @@
-
-escribe('Test links on video.sky.it', () => {
+describe('Test links on video.sky.it', () => {
   it('Check Links', () => {
     var linkNoWork = []
     var linkWork = []
